@@ -1,0 +1,25 @@
+version: "3.5"
+
+services:
+  web:
+    restart: always
+    image: webdevops/php-nginx:8.0
+    ports:
+      - 8000:80
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public_html
+
+  jsx-preproc:
+    restart: always
+    image: node:14
+    volumes:
+      - .:/home/node/app
+    #working_dir: /home/node/app/jsx-preprocessor
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    #command: npm install
+    command: sh -c "npm install && npx babel --watch src/js --out-dir public_html/compiled --presets react-app/prod"
