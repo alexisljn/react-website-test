@@ -1,6 +1,6 @@
 'use strict';
 
-import Toto from "./toto_jsx"
+// import Toto from "./toto_jsx"
 
 class LikeButton extends React.Component {
 
@@ -16,7 +16,7 @@ class LikeButton extends React.Component {
 
         return (
             <div>
-                <Toto/>
+                {/*<Toto/>*/}
                 <button onClick={() => this.setState({ liked: true }) }>
                     Like
                 </button>
